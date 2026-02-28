@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = CalculatorViewModel()
+
     var body: some View {
         VStack {
             Spacer()
-            Text("0")
+            Text(viewModel.display)
                 .font(.largeTitle)
                 .padding()
                 .background(Color.gray)
@@ -13,25 +15,37 @@ struct ContentView: View {
                 .multilineTextAlignment(.trailing)
             
             HStack {
-                Button("1") { } Button("2") { } Button("3") { } Button("/") { }
+                Button("1") { viewModel.appendDigit("1") }
+                Button("2") { viewModel.appendDigit("2") }
+                Button("3") { viewModel.appendDigit("3") }
+                Button("/") { viewModel.divide() }
             }
             .font(.largeTitle)
             .padding()
             
             HStack {
-                Button("4") { } Button("5") { } Button("6") { } Button("*") { }
+                Button("4") { viewModel.appendDigit("4") }
+                Button("5") { viewModel.appendDigit("5") }
+                Button("6") { viewModel.appendDigit("6") }
+                Button("*") { viewModel.multiply() }
             }
             .font(.largeTitle)
             .padding()
             
             HStack {
-                Button("7") { } Button("8") { } Button("9") { } Button("-") { }
+                Button("7") { viewModel.appendDigit("7") }
+                Button("8") { viewModel.appendDigit("8") }
+                Button("9") { viewModel.appendDigit("9") }
+                Button("-") { viewModel.subtract() }
             }
             .font(.largeTitle)
             .padding()
             
             HStack {
-                Button("0") { } Button("=") { } Button("C") { } Button("+") { }
+                Button("0") { viewModel.appendDigit("0") }
+                Button("=") { viewModel.equals() }
+                Button("C") { viewModel.clear() }
+                Button("+") { viewModel.add() }
             }
             .font(.largeTitle)
             .padding()

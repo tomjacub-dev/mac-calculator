@@ -60,6 +60,14 @@ class CalculatorViewModel: ObservableObject {
         }
     }
 
+    func appendDigit(_ digit: String) {
+        if display == "0" {
+            display = digit
+        } else {
+            display += digit
+        }
+    }
+
     private func setOperation(_ operation: Operation) {
         if firstOperand == nil {
             firstOperand = Double(display)

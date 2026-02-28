@@ -40,12 +40,12 @@ class CalculatorModel {
     }
 
     private func calculateIfNeeded(_ value: Double) {
-        guard let operator = lastOperator else {
+        guard let op = lastOperator else {
             currentResult = value
             return
         }
 
-        switch operator {
+        switch op {
         case "+":
             currentResult += value
         case "-":
